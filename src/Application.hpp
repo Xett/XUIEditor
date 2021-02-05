@@ -33,27 +33,19 @@ public:
 	// Load the config file
 	// Called during Application::OnInit()
 	void loadConfig();
+
+	void NewFile(wxCommandEvent& event);
+
 	// Open the project directory load dialogue, use to load a project to work on
 	// Called from File->Open and Open Project Tool
-	void Open(wxCommandEvent& event);
-	void OpenFolder(wxCommandEvent& event);
-	// Loads the project from the file path
-	// Called if config is properly loaded, or if a project folder is selected from the directory dialogue
-	void loadFolder(wxString projectDirectory=Model::getInstance().currentProjectPath);
-
-	// Helper function to load different sizes of an icon into an wxIconBundle
-	// Not implemented at all (yet?)
-	wxIconBundle* loadIcon(wxMemoryFSHandler* fsh, wxString fileString);
-	// Loads all the icons into wxIconBundles, sets them to local variables, but does nothing
-	// Not implemented at all (yet?)
-	void loadIcons();
+	void OpenFile(wxCommandEvent& event);
 
 	// Save the currently loaded file page
 	// Only Sprite Groups are implemented at the moment
 	void saveFile(wxCommandEvent& WXUNUSED(event));
-	// Save all the files in the project (that have been opened)
-	// Not implemented yet
-	void saveFileAll(wxCommandEvent& WXUNUSED(event));
+
+
+	void saveFileAs(wxCommandEvent& WXUNUSED(event));
 
 	// Update Icon/Widget States (Menu and Toolbar)
 	void UpdateStates();

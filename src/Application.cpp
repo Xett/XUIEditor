@@ -24,19 +24,25 @@ bool Application::OnInit()
 	mainFrame->Show(true);
 
 	// Menu Bindings
-	Bind(wxEVT_MENU, &Application::OpenFolder, this, XRCID("OpenMenuItem"));
+	Bind(wxEVT_MENU, &Application::NewFile, this, XRCID("NewMenuItem"));
+	Bind(wxEVT_MENU, &Application::OpenFile, this, XRCID("OpenMenuItem"));
 	Bind(wxEVT_MENU, &Application::OnExit, this, XRCID("QuitMenuItem"));
 	Bind(wxEVT_MENU, &Application::OnAbout, this, XRCID("AboutMenuItem"));
 	Bind(wxEVT_MENU, &Application::OnSettings, this, XRCID("SettingsMenuItem"));
 	Bind(wxEVT_MENU, &Application::Undo, this, XRCID("UndoMenuItem"));
 	Bind(wxEVT_MENU, &Application::Redo, this, XRCID("RedoMenuItem"));
 	Bind(wxEVT_MENU, &Application::saveFile, this, XRCID("SaveMenuItem"));
+	Bind(wxEVT_MENU, &Application::saveFileAs, this, XRCID("SaveAsMenuItem"));
 
+
+	Connect(XRCID("NewTool"), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(Application::NewFile));
+	Connect(XRCID("OpenTool"), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(Application::OpenFile));
 
 	Connect(XRCID("UndoTool"), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(Application::Undo));
 	Connect(XRCID("RedoTool"), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(Application::Redo));
 
 	Connect(XRCID("SaveTool"), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(Application::saveFile));
+	Connect(XRCID("SaveAsTool"), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(Application::saveFileAs));
 
 	//loadConfig();
 	UpdateStates();
@@ -60,12 +66,17 @@ void Application::loadConfig()
 	}
 }
 
+void Application::NewFile(wxCommandEvent& event)
+{
+
+}
+
 // Open the project directory load dialogue, use to load a project to work on
 // Called from File->Open and Open Project Tool
-void Application::Open(wxCommandEvent& event)
+void Application::OpenFile(wxCommandEvent& event)
 {
 	// Open Directory Dialogue for selecting the project root folder
-	wxFileDialog openFileDialog(mainFrame, _("Open file"), "", "", "XYZ files (*.xyz)|*.xyz", wxFD_OPEN|wxFD_FILE_MUST_EXIST);
+	wxFileDialog openFileDialog(mainFrame, _("Open Dying Light HUD File"), "", "", "XUI files (*.xui)|*.xui", wxFD_OPEN|wxFD_FILE_MUST_EXIST);
 	// Record the result
 	int result = openFileDialog.ShowModal();
 	// If the user clicks cancel
@@ -80,38 +91,6 @@ void Application::Open(wxCommandEvent& event)
 	}
 }
 
-// Open the project directory load dialogue, use to load a project to work on
-// Called from File->Open and Open Project Tool
-void Application::OpenFolder(wxCommandEvent& event)
-{
-	// Open Directory Dialogue for selecting the project root folder
-	wxDirDialog openFolderDialog(mainFrame, _("Open folder"), wxGetCwd(), 0, wxDefaultPosition);
-	// Record the result
-	int result = openFolderDialog.ShowModal();
-	// If the user clicks cancel
-	if (result == wxID_CANCEL)
-	{
-		return;
-	}
-	// If the user selects a root folder
-	else if (result == wxID_OK)
-	{
-		// Load the project from the file dialogue path
-		Model::getInstance().currentProjectPath = openFolderDialog.GetPath().ToStdString();
-		// Load Folder
-	}
-}
-
-// Loads the project from the file path
-// Called if config is properly loaded, or if a project folder is selected from the directory dialogue
-void Application::loadFolder(wxString projectDirectory)
-{
-	// Set the working directory to the project path
-	wxSetWorkingDirectory(projectDirectory);
-	// Update the main frame status to the project path
-	//mainFrame->UpdateCurrentProjectStatusString();
-}
-
 // Save the currently loaded file
 void Application::saveFile(wxCommandEvent& event)
 {
@@ -119,7 +98,7 @@ void Application::saveFile(wxCommandEvent& event)
 }
 
 // Save all the files in the project (that have been opened)
-void Application::saveFileAll(wxCommandEvent& event)
+void Application::saveFileAs(wxCommandEvent& event)
 {
 
 }

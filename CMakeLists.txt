@@ -3,7 +3,7 @@ cmake_minimum_required (VERSION 3.18)
 
 include(ExternalProject)
 
-project (TemplateApplication)
+project (XUIEditor)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -20,7 +20,7 @@ add_subdirectory(wxWidgets)
 
 add_custom_command(OUTPUT "${CMAKE_SOURCE_DIR}/src/View/view.h" "${CMAKE_SOURCE_DIR}/src/View/view.cpp"
 	DEPENDS wxrc
-	COMMAND wxrc ${CMAKE_SOURCE_DIR}/TemplateApplication.xrc -c -e -o ${CMAKE_SOURCE_DIR}/src/View/view.cpp)
+	COMMAND wxrc ${CMAKE_SOURCE_DIR}/XUIEditor.xrc -c -e -o ${CMAKE_SOURCE_DIR}/src/View/view.cpp)
 
 set(INPUT_FILES
 	src/main.cpp
@@ -38,12 +38,12 @@ set(PCH_FILES
 	src/View/XRC/SettingsFrame.hpp)
 
 if (WIN32)
-	add_executable(TemplateApplication WIN32 ${INPUT_FILES})
+	add_executable(XUIEditor WIN32 ${INPUT_FILES})
 endif (WIN32)
 
 if (UNIX)
-	add_executable(TemplateApplication ${INPUT_FILES})
+	add_executable(XUIEditor ${INPUT_FILES})
 endif (UNIX)
 
-target_link_libraries(TemplateApplication wx::net wx::core wx::base wx::xrc nlohmann_json::nlohmann_json)
-target_precompile_headers(TemplateApplication PUBLIC src/View/XRC/pch.hpp PRIVATE ${PCH_HEADERS})
+target_link_libraries(XUIEditor wx::net wx::core wx::base wx::xrc nlohmann_json::nlohmann_json)
+target_precompile_headers(XUIEditor PUBLIC src/View/XRC/pch.hpp PRIVATE ${PCH_HEADERS})

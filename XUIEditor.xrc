@@ -3,13 +3,18 @@
 	<object class="wxFrame" name="MainFrame_Base">
 		<style>wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL</style>
 		<size>800,600</size>
-		<title>Template Application</title>
+		<title>Dying Light HUD Editor</title>
 		<centered>1</centered>
 		<aui_managed>0</aui_managed>
 		<object class="wxMenuBar" name="MenuBar">
 			<label>MenuBar</label>
 			<object class="wxMenu" name="FileMenu">
 				<label>File</label>
+				<object class="wxMenuItem" name="NewMenuItem">
+					<label>New\tCTRL-N</label>
+					<help></help>
+					<bitmap>icons/add-file-16.png</bitmap>
+				</object>
 				<object class="wxMenuItem" name="OpenMenuItem">
 					<label>Open\tCTRL-O</label>
 					<help></help>
@@ -21,10 +26,10 @@
 					<help></help>
 					<bitmap>icons/save-16.png</bitmap>
 				</object>
-				<object class="wxMenuItem" name="SaveAllMenuItem">
-					<label>Save All</label>
+				<object class="wxMenuItem" name="SaveAsMenuItem">
+					<label>Save As</label>
 					<help></help>
-					<bitmap>icons/save-all-16.png</bitmap>
+					<bitmap>icons\save-as-16.png</bitmap>
 				</object>
 				<object class="separator" />
 				<object class="wxMenuItem" name="QuitMenuItem">
@@ -94,17 +99,29 @@
 			<margins></margins>
 			<packing>1</packing>
 			<separation>5</separation>
+			<object class="tool" name="NewTool">
+				<label>New</label>
+				<tooltip>New File (CTRL-N)</tooltip>
+				<longhelp></longhelp>
+				<bitmap>icons/add-file-32.png</bitmap>
+			</object>
+			<object class="tool" name="OpenTool">
+				<label>Open</label>
+				<tooltip>Open HUD File (CTRL-O)</tooltip>
+				<longhelp></longhelp>
+				<bitmap>icons/folder-32.png</bitmap>
+			</object>
 			<object class="tool" name="SaveTool">
 				<label>Save</label>
 				<tooltip>Save the current file (CTRL-S)</tooltip>
 				<longhelp></longhelp>
 				<bitmap>icons/save-32.png</bitmap>
 			</object>
-			<object class="tool" name="SaveAllTool">
-				<label>Save All</label>
-				<tooltip>Save all the files in the loaded project</tooltip>
+			<object class="tool" name="SaveAsTool">
+				<label>Save As</label>
+				<tooltip>Save to another file</tooltip>
 				<longhelp></longhelp>
-				<bitmap>icons/save-all-32.png</bitmap>
+				<bitmap>icons\save-as-32.png</bitmap>
 			</object>
 			<object class="separator" />
 			<object class="tool" name="UndoTool">
@@ -165,7 +182,7 @@
 				<flag>wxALL</flag>
 				<border>5</border>
 				<object class="wxStaticText" name="AboutText">
-					<label>Help Text\nCreated by Ethan Jones 2021</label>
+					<label>Dying Light HUD Editor\nCreated by Ethan Jones 2021</label>
 					<wrap>-1</wrap>
 				</object>
 			</object>
@@ -195,33 +212,6 @@
 			<style>wxTAB_TRAVERSAL</style>
 			<object class="wxBoxSizer">
 				<orient>wxVERTICAL</orient>
-				<object class="sizeritem">
-					<option>1</option>
-					<flag>wxEXPAND</flag>
-					<border>5</border>
-					<object class="wxBoxSizer">
-						<orient>wxHORIZONTAL</orient>
-						<object class="sizeritem">
-							<option>1</option>
-							<flag>wxALL|wxEXPAND</flag>
-							<border>5</border>
-							<object class="wxStaticText" name="AutoloadDirectoryLabel">
-								<label>Autoload Directory</label>
-								<wrap>-1</wrap>
-							</object>
-						</object>
-						<object class="sizeritem">
-							<option>4</option>
-							<flag>wxALL|wxEXPAND</flag>
-							<border>5</border>
-							<object class="wxDirPickerCtrl" name="AutoloadDirectoryControl">
-								<value></value>
-								<message>Select a folder</message>
-								<style>wxDIRP_DEFAULT_STYLE</style>
-							</object>
-						</object>
-					</object>
-				</object>
 				<object class="sizeritem">
 					<option>1</option>
 					<flag>wxBOTTOM|wxEXPAND</flag>
