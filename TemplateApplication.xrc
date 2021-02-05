@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<resource xmlns="http://www.wxwindows.org/wxxrc" version="2.3.0.1">
+	<object class="wxFrame" name="MainFrame_Base">
+		<style>wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL</style>
+		<size>800,600</size>
+		<title>Template Application</title>
+		<centered>1</centered>
+		<aui_managed>0</aui_managed>
+		<object class="wxMenuBar" name="MenuBar">
+			<label>MenuBar</label>
+			<object class="wxMenu" name="FileMenu">
+				<label>File</label>
+				<object class="wxMenuItem" name="OpenMenuItem">
+					<label>Open\tCTRL-O</label>
+					<help></help>
+					<bitmap>icons/folder-16.png</bitmap>
+				</object>
+				<object class="separator" />
+				<object class="wxMenuItem" name="SaveMenuItem">
+					<label>Save\tCTRL-S</label>
+					<help></help>
+					<bitmap>icons/save-16.png</bitmap>
+				</object>
+				<object class="wxMenuItem" name="SaveAllMenuItem">
+					<label>Save All</label>
+					<help></help>
+					<bitmap>icons/save-all-16.png</bitmap>
+				</object>
+				<object class="separator" />
+				<object class="wxMenuItem" name="QuitMenuItem">
+					<label>Quit\tCTRL-Q</label>
+					<help></help>
+					<bitmap>icons/quit-16.png</bitmap>
+				</object>
+			</object>
+			<object class="wxMenu" name="EditMenu">
+				<label>Edit</label>
+				<object class="wxMenuItem" name="CutMenuItem">
+					<label>Cut\tCTRL-X</label>
+					<help></help>
+					<bitmap>icons/cut-16.png</bitmap>
+				</object>
+				<object class="wxMenuItem" name="CopyMenuItem">
+					<label>Copy\tCTRL-C</label>
+					<help></help>
+					<bitmap>icons/copy-16.png</bitmap>
+				</object>
+				<object class="wxMenuItem" name="PasteMenuItem">
+					<label>Paste\tCTRL-V</label>
+					<help></help>
+					<bitmap>icons/paste-16.png</bitmap>
+				</object>
+				<object class="separator" />
+				<object class="wxMenuItem" name="UndoMenuItem">
+					<label>Undo\tCTRL-Z</label>
+					<help></help>
+					<bitmap>icons/undo-16.png</bitmap>
+				</object>
+				<object class="wxMenuItem" name="RedoMenuItem">
+					<label>Redo\tCTRL-Y</label>
+					<help></help>
+					<bitmap>icons/redo-16.png</bitmap>
+				</object>
+				<object class="separator" />
+				<object class="wxMenuItem" name="DeleteMenuItem">
+					<label>Delete</label>
+					<help></help>
+					<bitmap>icons/delete-16.png</bitmap>
+				</object>
+			</object>
+			<object class="wxMenu" name="ViewMenu">
+				<label>View</label>
+			</object>
+			<object class="wxMenu" name="OptionsMenu">
+				<label>Options</label>
+				<object class="wxMenuItem" name="SettingsMenuItem">
+					<label>Settings</label>
+					<help></help>
+					<bitmap>icons/settings-16.png</bitmap>
+				</object>
+			</object>
+			<object class="wxMenu" name="HelpMenu">
+				<label>Help</label>
+				<object class="wxMenuItem" name="AboutMenuItem">
+					<label>About</label>
+					<help></help>
+					<bitmap>icons/info-16.png</bitmap>
+				</object>
+			</object>
+		</object>
+		<object class="wxToolBar" name="ToolBar">
+			<style>wxTB_HORIZONTAL</style>
+			<bitmapsize></bitmapsize>
+			<margins></margins>
+			<packing>1</packing>
+			<separation>5</separation>
+			<object class="tool" name="SaveTool">
+				<label>Save</label>
+				<tooltip>Save the current file (CTRL-S)</tooltip>
+				<longhelp></longhelp>
+				<bitmap>icons/save-32.png</bitmap>
+			</object>
+			<object class="tool" name="SaveAllTool">
+				<label>Save All</label>
+				<tooltip>Save all the files in the loaded project</tooltip>
+				<longhelp></longhelp>
+				<bitmap>icons/save-all-32.png</bitmap>
+			</object>
+			<object class="separator" />
+			<object class="tool" name="UndoTool">
+				<label>Undo</label>
+				<tooltip>Undo last action (CTRL-Z)</tooltip>
+				<longhelp></longhelp>
+				<bitmap>icons/undo-32.png</bitmap>
+			</object>
+			<object class="tool" name="RedoTool">
+				<label>Redo</label>
+				<tooltip>Redo next action (CTRL-Y)</tooltip>
+				<longhelp></longhelp>
+				<bitmap>icons/redo-32.png</bitmap>
+			</object>
+			<object class="separator" />
+			<object class="tool" name="DeleteTool">
+				<label>Delete</label>
+				<tooltip>Delete the current file</tooltip>
+				<longhelp></longhelp>
+				<bitmap>icons/delete-32.png</bitmap>
+			</object>
+			<object class="separator" />
+			<object class="tool" name="CutTool">
+				<label>Cut</label>
+				<tooltip>Cut (CTRL-X)</tooltip>
+				<longhelp></longhelp>
+				<bitmap>icons/cut-32.png</bitmap>
+			</object>
+			<object class="tool" name="CopyTool">
+				<label>Copy</label>
+				<tooltip>Copy (CTRL-C)</tooltip>
+				<longhelp></longhelp>
+				<bitmap>icons/copy-32.png</bitmap>
+			</object>
+			<object class="tool" name="PasteTool">
+				<label>Paste</label>
+				<tooltip>Paste (CTRL-V)</tooltip>
+				<longhelp></longhelp>
+				<bitmap>icons/paste-32.png</bitmap>
+			</object>
+		</object>
+		<object class="wxBoxSizer">
+			<orient>wxHORIZONTAL</orient>
+		</object>
+		<object class="wxStatusBar" name="StatusBar">
+			<style>wxSTB_SIZEGRIP</style>
+			<fields>1</fields>
+		</object>
+	</object>
+	<object class="wxDialog" name="About_Base">
+		<style>wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP</style>
+		<title>About</title>
+		<centered>1</centered>
+		<object class="wxBoxSizer">
+			<orient>wxVERTICAL</orient>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticText" name="AboutText">
+					<label>Help Text\nCreated by Ethan Jones 2021</label>
+					<wrap>-1</wrap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxStdDialogButtonSizer">
+					<object class="button">
+						<flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_OK">
+							<label>&amp;OK</label>
+						</object>
+					</object>
+				</object>
+			</object>
+		</object>
+	</object>
+	<object class="wxFrame" name="SettingsFrame_Base">
+		<style>wxCAPTION|wxCLOSE_BOX|wxRESIZE_BORDER|wxSTAY_ON_TOP|wxSYSTEM_MENU|wxTAB_TRAVERSAL</style>
+		<size>500,300</size>
+		<title>Settings</title>
+		<centered>1</centered>
+		<aui_managed>0</aui_managed>
+		<object class="wxPanel" name="m_panel10">
+			<style>wxTAB_TRAVERSAL</style>
+			<object class="wxBoxSizer">
+				<orient>wxVERTICAL</orient>
+				<object class="sizeritem">
+					<option>1</option>
+					<flag>wxEXPAND</flag>
+					<border>5</border>
+					<object class="wxBoxSizer">
+						<orient>wxHORIZONTAL</orient>
+						<object class="sizeritem">
+							<option>1</option>
+							<flag>wxALL|wxEXPAND</flag>
+							<border>5</border>
+							<object class="wxStaticText" name="AutoloadDirectoryLabel">
+								<label>Autoload Directory</label>
+								<wrap>-1</wrap>
+							</object>
+						</object>
+						<object class="sizeritem">
+							<option>4</option>
+							<flag>wxALL|wxEXPAND</flag>
+							<border>5</border>
+							<object class="wxDirPickerCtrl" name="AutoloadDirectoryControl">
+								<value></value>
+								<message>Select a folder</message>
+								<style>wxDIRP_DEFAULT_STYLE</style>
+							</object>
+						</object>
+					</object>
+				</object>
+				<object class="sizeritem">
+					<option>1</option>
+					<flag>wxBOTTOM|wxEXPAND</flag>
+					<border>5</border>
+					<object class="wxStdDialogButtonSizer">
+						<object class="button">
+							<flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+							<border>5</border>
+							<object class="wxButton" name="wxID_SAVE">
+								<label>&amp;Save</label>
+							</object>
+						</object>
+						<object class="button">
+							<flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+							<border>5</border>
+							<object class="wxButton" name="wxID_APPLY">
+								<label>&amp;Apply</label>
+							</object>
+						</object>
+						<object class="button">
+							<flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+							<border>5</border>
+							<object class="wxButton" name="wxID_CANCEL">
+								<label>&amp;Cancel</label>
+							</object>
+						</object>
+					</object>
+				</object>
+			</object>
+		</object>
+	</object>
+	<object class="wxPanel" name="ImageDummy">
+		<style>wxTAB_TRAVERSAL</style>
+		<size>1280,760</size>
+		<object class="wxWrapSizer">
+			<orient>wxHORIZONTAL</orient>
+			<flags>wxWRAPSIZER_DEFAULT_FLAGS</flags>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="CopyIcon16">
+					<bitmap>icons/copy-16.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="CopyIcon24">
+					<bitmap>icons/copy-24.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="CopyIcon32">
+					<bitmap>icons\copy-32.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="CopyIcon64">
+					<bitmap>icons\copy-64.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="CursorIcon16">
+					<bitmap>icons/cursor-16.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="CursorIcon24">
+					<bitmap>icons\cursor-24.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="CursorIcon32">
+					<bitmap>icons\cursor-32.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="CursorIcon64">
+					<bitmap>icons\cursor-64.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="CutIcon16">
+					<bitmap>icons/cut-16.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="CutIcon24">
+					<bitmap>icons\cut-24.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="CutIcon32">
+					<bitmap>icons\cut-32.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="CutIcon64">
+					<bitmap>icons\cut-64.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="DeleteIcon16">
+					<bitmap>icons/delete-16.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="DeleteIcon24">
+					<bitmap>icons\delete-24.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="DeleteIcon32">
+					<bitmap>icons\delete-32.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="DeleteIcon64">
+					<bitmap>icons\delete-64.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="FolderIcon16">
+					<bitmap>icons/folder-16.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="FolderIcon24">
+					<bitmap>icons\folder-24.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="FolderIcon32">
+					<bitmap>icons\folder-32.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="FolderIcon64">
+					<bitmap>icons\folder-64.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="InfoIcon16">
+					<bitmap>icons/info-16.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="InfoIcon24">
+					<bitmap>icons\info-24.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="InfoIcon32">
+					<bitmap>icons\info-32.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="InfoIcon64">
+					<bitmap>icons\info-64.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="PasteIcon16">
+					<bitmap>icons/paste-16.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="PasteIcon24">
+					<bitmap>icons\paste-24.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="PasteIcon32">
+					<bitmap>icons\paste-32.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="PasteIcon64">
+					<bitmap>icons\paste-64.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="QuitIcon16">
+					<bitmap>icons/quit-16.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="QuitIcon24">
+					<bitmap>icons\quit-24.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="QuitIcon32">
+					<bitmap>icons\quit-32.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="QuitIcon64">
+					<bitmap>icons\quit-64.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="RedoIcon16">
+					<bitmap>icons/redo-16.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="RedoIcon24">
+					<bitmap>icons\redo-24.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="RedoIcon32">
+					<bitmap>icons\redo-32.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="RedoIcon64">
+					<bitmap>icons\redo-64.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="SaveIcon16">
+					<bitmap>icons/save-16.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="SaveIcon24">
+					<bitmap>icons\save-24.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="SaveIcon32">
+					<bitmap>icons\save-32.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="SaveIcon64">
+					<bitmap>icons\save-64.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="SaveAllIcon16">
+					<bitmap>icons/save-all-16.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="SaveAllIcon24">
+					<bitmap>icons\save-all-24.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="SaveAllIcon32">
+					<bitmap>icons\save-all-32.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="SaveAllIcon64">
+					<bitmap>icons\save-all-64.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="SaveAsIcon16">
+					<bitmap>icons/save-as-16.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="SaveAsIcon24">
+					<bitmap>icons\save-as-24.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="SaveAsIcon32">
+					<bitmap>icons\save-as-32.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="SaveAsIcon64">
+					<bitmap>icons\save-as-64.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="SettingsIcon16">
+					<bitmap>icons/settings-16.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="SettingsIcon24">
+					<bitmap>icons\settings-24.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="SettingsIcon32">
+					<bitmap>icons\settings-32.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="SettingsIcon64">
+					<bitmap>icons\settings-64.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="UndoIcon16">
+					<bitmap>icons/undo-16.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="UndoIcon24">
+					<bitmap>icons\undo-24.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="UndoIcon32">
+					<bitmap>icons\undo-32.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="UndoIcon64">
+					<bitmap>icons\undo-64.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="ZoomInIcon16">
+					<bitmap>icons/zoom-in-16.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="ZoomInIcon24">
+					<bitmap>icons\zoom-in-24.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="ZoomInIcon32">
+					<bitmap>icons\zoom-in-32.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="ZoomInIcon64">
+					<bitmap>icons\zoom-in-64.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="ZoomOutIcon16">
+					<bitmap>icons/zoom-out-16.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="ZoomOutIcon24">
+					<bitmap>icons\zoom-out-24.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="ZoomOutIcon32">
+					<bitmap>icons\zoom-out-32.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="ZoomOutIcon64">
+					<bitmap>icons\zoom-out-64.png</bitmap>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL</flag>
+				<border>5</border>
+				<object class="wxStaticBitmap" name="ApplicationIcon32">
+					<bitmap>icons\icon-32.png</bitmap>
+				</object>
+			</object>
+		</object>
+	</object>
+</resource>

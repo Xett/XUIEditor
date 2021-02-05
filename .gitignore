@@ -1,0 +1,11 @@
+CMakeFiles/*
+bin/*
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+uninstall.cmake
+lib/*
+.vs/*
+out/*
+src/View/view.cpp
+src/View/view.h
